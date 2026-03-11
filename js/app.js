@@ -160,7 +160,17 @@
           document.querySelectorAll('.file-link').forEach(l => l.classList.remove('active'));
           btn.classList.add('active');
           if ($breadcrumbs) $breadcrumbs.textContent = `SYSTEM / ${[...path, cleanName].join(' / ').toUpperCase()}`;
-          openDocument(node, cleanName); // Now calls directly, security check happens after fetch
+          
+          // 모바일에서 파일 클릭 시 사이드바 닫기
+          if (window.innerWidth <= 768 && $sidebar.classList.contains('open')) {
+            $sidebar.classList.remove('open');
+            if ($mobileToggle) $mobileToggle.classList.remove('active');
+            const $appContainer = document.getElementById('app');
+            if ($appContainer) $appContainer.classList.remove('sidebar-open');
+            document.body.style.overflow = '';
+          }
+          
+          openDocument(node, cleanName);
         });
         div.appendChild(btn);
       }
@@ -345,9 +355,45 @@
   }
 
   function setupMobile() {
-    if($mobileToggle) $mobileToggle.addEventListener('click', () => {
-      if ($sidebar) $sidebar.classList.toggle('open');
-      $mobileToggle.classList.toggle('active');
+    if (!$mobileToggle || !$sidebar) return;
+
+    const $appContainer = document.getElementById('app');
+
+    const toggleSidebar = (forceClose = false) => {
+      const isOpen = forceClose ? false : !$sidebar.classList.contains('open');
+      
+      $sidebar.classList.toggle('open', isOpen);
+      $mobileToggle.classList.toggle('active', isOpen);
+      if ($appContainer) $appContainer.classList.toggle('sidebar-open', isOpen);
+      
+      // 모바일에서 사이드바가 열리면 본문 스크롤 방지
+      if (window.innerWidth <= 768) {
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+    };
+
+    $mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleSidebar();
+    });
+
+    // 사이드바 외부(오버레이) 클릭 시 닫기
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && $sidebar.classList.contains('open')) {
+        if (!$sidebar.contains(e.target) && !$mobileToggle.contains(e.target)) {
+          toggleSidebar(true);
+        }
+      }
+    });
+
+    // 화면 크기 변경 시 스타일 초기화
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        $sidebar.classList.remove('open');
+        $mobileToggle.classList.remove('active');
+        if ($appContainer) $appContainer.classList.remove('sidebar-open');
+        document.body.style.overflow = '';
+      }
     });
   }
 
