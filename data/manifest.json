@@ -1,0 +1,1627 @@
+[
+  {
+    "name": "00. 공단_본부",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "1001. 일반_행정_및_지침",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 표준_양식",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 공용_문서_양식_가이드.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 대외_홍보용_채용_가이드_및_복리후생_요약본.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0003. 특수_업무_수당_및_가계_자금_무이자_대출_신청_서식.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0004. 공단_전략_자산_상용화_및_대외_비밀_매각_수익_보고서.md",
+                "type": "file",
+                "path": "REF-0004",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0005. 국가_인구_균형_유지_및_배양_자원_배치_계획.md",
+                "type": "file",
+                "path": "REF-0005",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0006. 공단_전략_자산_다각화_상용화_모델_카탈로그.md",
+                "type": "file",
+                "path": "REF-0006",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0007. 국가_전략_인프라_암호_체계_독점_임대_수익_현황.md",
+                "type": "file",
+                "path": "REF-0007",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "1002. 표준_행정_용어",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 용어_정의",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 표준_행정_용어_정의.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "1003. 기관_간_협약",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 인계인수_규정",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 기관_간_인계인수_공통규정.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "1004. 인적_자원_관리",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 고용_및_위임",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 특수_외주_인력_고용_계약_및_신변_처리_위임장.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 우수_사원_포상_및_정서적_보상_표준.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0003. 전사적_보상_체계_프로젝트_에덴_운영_지침.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "01. DUSI_중앙관리국",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "9101. 중앙_통제_및_격리",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 음각_지침",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 음각_구역_선포_및_봉쇄_지침.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "9201. 행정_감사_및_평가",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 감사_결과",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 하청_기관별_행정_무결성_감사_결과_통보서.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 제XX구역_집단_실종_사건_은폐_기록.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 복지_성과_분석",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 우수_요원_가족_초청_여행_만족도_조사_결과.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "9301. 긴급_행정_명령",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 정보_격리",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 제XX사태_관련_정보_격리령.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "9901. 특수_보안_기록",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 소급_말소_명부",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 존재의_소급_말소_대상자_명부_양식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 존재의_소급_말소_대상자_명부_실행_기록.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": null,
+                  "security": null,
+                  "date": null
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 불멸의_각인_명부",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 불멸의_행정_각인_대상자_명부_양식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "02. (주)특수시설유지관리",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "2101. 현장_대응_및_수칙",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 안전_관리",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 현장_대응_및_안전관리_수칙.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "2102. 인적_결손_관리",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 조사_및_세칙",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 현장_조사_및_인적_자원_관리_세칙.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 현장_보고용_표준_행정_순화_용어_대조표.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "2103. 노이즈_측정_표준",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 판정_지침",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 잔류_노이즈_측정_및_판정_지침.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "2104. 현장_보고_체계",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 조사_보고서",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 현장_조사_결과_보고_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": null,
+                  "security": null,
+                  "date": null
+                }
+              },
+              {
+                "name": "0003. 현장_요원_복지_혜택_이용_로그_실제_사례.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0004. 현장_요원_표준_식사_및_감각_리셋_로그.md",
+                "type": "file",
+                "path": "REF-0004",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "2901. 데이터_복구_기록",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 음성_로그",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 단말기_회수_데이터_및_음성_로그_복구_보고_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 제XX구역_단말기_음성_로그_복구_사례.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 장비_점검",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. GAON-RMS_장비_현장_영점_조율_대장_양식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. RMS-U-7702-X_현장_조율_기록.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "03. 불일치_소명",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 해시_불일치_발생_현장_긴급_소명서_양식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "04. 사기_진작_연구",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 요원_자발적_사기_진작_사례_연구_현실의_맛_피드백.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "03. (주)야간환경정비",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "3101. 현장_정비_및_마모",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 공정_표준",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 현장_정비_및_마모_공정_표준.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "3102. 시각_위장_및_복구",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 에이징_지침",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 현장_위장_및_에이징_처리_지침.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "3103. 정비_완료_보고",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 폐기_보고서",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 현장_정비_및_폐기_완료_보고서_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 비인가_유기_잔해물_매립_적발_보고서.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "3201. 예산_관리_지침",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 비용_절감",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 예산_절감을_위한_잔류_존재_마모_가이드라인.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "3901. 공정_예외_보고",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 현장_경위",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 공정_예외_현상_발생_보고_및_경위서_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. ASSET-E-909_마모_공정_예외_발생_경위서.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "3902. 소모품_관리_대장",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 배급_및_사용",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 마모_공정용_소모품_배급_및_사용_대장_양식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "04. (주)유성물류기획",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "4101. 특수_자산_이송",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 격리_지침",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 특수_자산_운송_및_데이터_격리_지침.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 특수_자산_이송_차량_위상_오염_사례_보고서.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 차량_관리",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 이송_차량_위상_오염_정밀_검수_대장_양식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "4102. 자산_반출_관리",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 운송_전표",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 특수_자산_반출_및_운송_전표.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": null,
+                  "security": null,
+                  "date": null
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "4901. 이송_사고_대응",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 봉인_훼손",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 비정형_자산_이송용_봉인_훼손_경위서_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "05. (주)바른도시건설",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "5101. 시설_차폐_및_격리",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 위장_세칙",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 격리_시설_위장_및_대외_정보_관리_세칙.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "5102. 대외_정보_통제",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 언론_지침",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 언론_통제_및_정정_보도_지침.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 대규모_노출_사태_시_사회적_망각_집행_표준.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0003. 기적의_생환_대외_홍보_및_미담_유포_가이드라인.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "5103. 도시_계획_관리",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 유령지구_설정",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 도시_계획_상_유령지구_설정_지침.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 자산_상용화_사업",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 위상_공간_중첩_이용_고밀도_주거_단지_분양_보고서.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "5104. 공사_허가_체계",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 차폐_보고서",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 대외_공사_허가_및_현장_차폐_보고서.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": null,
+                  "security": null,
+                  "date": null
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "5201. 민원_대응_관리",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 소음_민원",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 야간_인프라_소음_민원_표준_답변_매뉴얼.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 악성_민원인_행정_처리_사례_연구.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 민원_종결_보고",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 민원인_블랙리스트_행정_처리_종결_보고_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "06. (주)미래생명과학",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "6101. 인지_의료_및_검진",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 치료_세칙",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 인지_오염_정밀_검진_및_치료_세칙.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0003. 사고_인원_생체_재구성_및_사회_복귀_집행_표준.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 인구_배양_관리",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. Batch-G_인공_인구_급속_배양_및_기억_주입_공정_표준.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "6201. 생체_시료_연구",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 보관_가이드",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 특수_생체_시료_보관_및_연구_가이드.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "6301. 요원_보건_배급",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 영양_및_안정제",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 요원_전용_고농축_영양_배급제_및_인지_안정제_복용_규격.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "6302. 요원_복지_및_케어",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 안식의_방_지침",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 사내_멘탈_케어_시스템_안식의_방_운용_지침.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 요원_ID_E-3102-12_강제_안식_세션_경과_보고서.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 배급_물품_관리",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 사내_복지_물품_및_배급_카탈로그.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 감각_성역_프리즘_내부_시설_및_배급_규격_카탈로그.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0003. 신규_요원_적응_지원_웰컴_패키지_보급_및_관리_지침.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "03. 거주_복지_관리",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 1급_청정_구역_거주권_부여_기준_및_관리_세칙.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "6401. 재사회화_설계",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 이력_패키지",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 행정적_재사회화_대상자_전용_표준_이력_패키지.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 표준_이력_패키지_확장_카탈로그_v2.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "6501. 임상_데이터_기준",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 인지_현상_대조",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. CN_수치별_임상_인지_현상_대조표.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "6901. 정신_무결성_평가",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 검사_결과",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 정신_무결성_검사_결과_통보서_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0003. 재구성_인원_부적응_및_인지_결함_관찰_기록.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "6902. 심리_면담_기록",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 평가_녹취",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 인적_자원_심리_면담_및_평가_기록_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. 요원_ID_M-2104-77_심리_면담_녹취록.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "04. 요원_전용_고농축_영양_배급제_및_인지_안정제_복용_규격.md",
+        "type": "file",
+        "path": "04. 요원_전용_고농축_영양_배급제_및_인지_안정제_복용_규격",
+        "meta": {
+          "docId": "",
+          "security": "",
+          "date": "20XX. XX. XX."
+        }
+      }
+    ]
+  },
+  {
+    "name": "07. (주)가온정밀시스템",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "7101. 계측_표준_및_검증",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 운용_규격",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. GAON-RMS_표준_장비_운용_규격.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. GAON-EYE_가시_필터_운용_규격.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0003. DUSI-CUFF_현실_닻_구속_장비_규격.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "7201. 시스템_운용_제어",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. OS_및_해시",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. DUSI-OS_터미널_접속_및_해시_인장_수동_검증_가이드.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 자산_상용화_기술",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 엔트로피_노이즈_기반_예측_시장_운용_매뉴얼.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "7901. 장비_유지_관리",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 정비_대장",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 장비_영점_조율_및_정비_대장.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "7902. 데이터_소명_체계",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 불일치_소명",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 단말기_해시_검증_불일치_소명_보고서_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "08. (주)특수자산전략분석",
+    "type": "folder",
+    "path": null,
+    "children": [
+      {
+        "name": "8101. 자산_가치_평가",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 평가_표준",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 비정형_개체_자산_가치_평가_및_등급_부여_표준.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "02. 이익_공유_관리",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 비정형_자산_이익_공유_배분_신청_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          },
+          {
+            "name": "03. 과실_및_분쟁_조정",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 타_하청_기관_과실에_따른_자산_손실_보상_청구서.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "8901. 현장_제압_기록",
+        "type": "folder",
+        "path": null,
+        "children": [
+          {
+            "name": "01. 작전_보고",
+            "type": "folder",
+            "path": null,
+            "children": [
+              {
+                "name": "0001. 비정형_자산_생포_및_제압_작전_결과_보고_서식.md",
+                "type": "file",
+                "path": "REF-0001",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0002. ENTITY-V-042_생포_및_제압_작전_보고서.md",
+                "type": "file",
+                "path": "REF-0002",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              },
+              {
+                "name": "0003. 제07구역_확보_실패_및_요원_전원_마모_기록.md",
+                "type": "file",
+                "path": "REF-0003",
+                "meta": {
+                  "docId": "",
+                  "security": "",
+                  "date": "20XX. XX. XX."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "세계관 및 문서 양식 분석.md",
+    "type": "file",
+    "path": "세계관 및 문서 양식 분석",
+    "meta": {
+      "docId": null,
+      "security": null,
+      "date": null
+    }
+  }
+]

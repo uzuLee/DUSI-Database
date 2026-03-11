@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>DUSI-NET CORE // TACTICAL ARCHIVE</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;500;800&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dusi-net-os">
+
+<div class="fx-layer">
+  <div class="grid-mesh"></div>
+  <div class="crt-overlay"></div>
+  <div class="scanline"></div>
+</div>
+
+<div id="boot-curtain" class="boot-curtain">
+  <div class="boot-loader">
+    <div class="loader-diamond"></div>
+    <div class="loader-text">DUSI-CORE INITIALIZING...</div>
+  </div>
+</div>
+
+<div id="app" class="main-interface">
+  
+  <!-- Side Panel -->
+  <aside class="side-panel" id="side-panel">
+    <header class="panel-header">
+      <div class="header-glitch" data-text="DUSI-NET">DUSI-NET</div>
+      <div class="sub-tag">STRATEGIC ARCHIVE // v4.8</div>
+    </header>
+
+    <div class="search-area">
+      <input type="text" id="search-input" placeholder="SEARCH_DB_..." autocomplete="off">
+    </div>
+
+    <nav class="archive-tree" id="archive-tree"></nav>
+
+    <footer class="panel-footer">
+      <div class="sys-info">
+        <div class="info-row"><span>STATUS:</span> <span class="active">CONNECTED</span></div>
+        <div class="info-row"><span>NODE:</span> <span class="cyan">ADMIN-01</span></div>
+      </div>
+    </footer>
+  </aside>
+
+  <!-- Mobile Overlay -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- Main Viewport -->
+  <main class="viewport">
+    <header class="top-nav">
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-breadcrumbs" id="nav-breadcrumbs">SYSTEM / ROOT / WELCOME</div>
+      <div class="top-nav-right">
+        <div class="time-box" id="current-time">00:00:00</div>
+        <div class="auth-badge">TOP SECRET</div>
+      </div>
+    </header>
+
+    <section class="content-area" id="content-area">
+      <!-- Welcome View -->
+      <div id="welcome-view" class="welcome-view">
+        <div class="welcome-content">
+          <div class="big-icon">&#9632;</div>
+          <h1 class="display-title">DUSI DATABASE</h1>
+          <p class="display-desc">도시야간안전 인프라 공단 핵심 전산망</p>
+          <div class="stats-row" id="welcome-stats"></div>
+        </div>
+      </div>
+
+      <!-- Document View -->
+      <div id="doc-view" class="document-view hidden">
+        <div class="doc-container">
+          <div class="doc-side-decor left"></div>
+          <div class="doc-side-decor right"></div>
+          
+          <header class="doc-header">
+            <div class="meta-top">
+              <span class="doc-id" id="doc-id-display">DOC-XXXX-XXXX</span>
+              <span class="security-badge" id="security-display">UNCLASSIFIED</span>
+            </div>
+            <h1 class="doc-title" id="doc-title-display">---</h1>
+            <div class="meta-bottom">
+              <span id="doc-title-en">---</span>
+              <span id="doc-date" class="date-stamp">20XX. XX. XX.</span>
+            </div>
+          </header>
+
+          <article class="doc-body markdown-body" id="doc-body"></article>
+
+          <footer class="doc-footer" id="doc-footer"></footer>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="js/marked.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
