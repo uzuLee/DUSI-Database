@@ -3,101 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>DUSI-NET CORE // TACTICAL ARCHIVE</title>
+<title>DUSI-NET :: SECURE DOCUMENT ARCHIVE</title>
 <link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;500;800&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="dusi-net-os">
+<body class="official-theme ready">
 
-<div class="fx-layer">
-  <div class="grid-mesh"></div>
-  <div class="crt-overlay"></div>
-  <div class="scanline"></div>
-</div>
+<!-- Cinematic Overlays -->
+<div class="noise-overlay"></div>
+<div class="vignette-overlay"></div>
+<div id="monitoring-bar" class="monitoring-bar hidden">SYSTEM_MONITORING_ACTIVE // SECURITY_LEVEL_01</div>
+<div id="glitch-layer" class="glitch-layer hidden"></div>
 
-<div id="boot-curtain" class="boot-curtain">
-  <div class="boot-loader">
-    <div class="loader-diamond"></div>
-    <div class="loader-text">DUSI-CORE INITIALIZING...</div>
+<!-- Boot/Auth Sequence Overlay -->
+<div id="boot-screen" class="boot-screen">
+  <div class="boot-content">
+    <div class="boot-logo">DUSI</div>
+    <div class="boot-status" id="boot-status">
+      <div class="status-line">INITIALIZING SECURE TERMINAL...</div>
+    </div>
+    <div class="boot-loader-bar"><div class="fill" id="boot-progress" style="width: 0%;"></div></div>
+    <div id="boot-perc" style="font-family: var(--font-mono); font-size: 0.7rem; margin-top: 5px; opacity: 0.5; text-align: right;">0%</div>
   </div>
 </div>
 
-<div id="app" class="main-interface">
+<!-- Custom Security Modal -->
+<div id="security-modal" class="modal-overlay hidden">
+  <div class="modal-box">
+    <div class="modal-header">RESTRICTED_ACCESS_WARNING</div>
+    <div class="modal-body" id="modal-body-content"></div>
+    <div class="modal-footer">
+      <button id="modal-cancel" class="modal-btn secondary">ABORT</button>
+      <button id="modal-confirm" class="modal-btn primary">PROCEED</button>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="app-container">
   
-  <!-- Side Panel -->
-  <aside class="side-panel" id="side-panel">
-    <header class="panel-header">
-      <div class="header-glitch" data-text="DUSI-NET">DUSI-NET</div>
-      <div class="sub-tag">STRATEGIC ARCHIVE // v4.8</div>
+  <aside class="sidebar" id="sidebar">
+    <header class="sidebar-header">
+      <div class="seal">DUSI</div>
+      <div class="title-group">
+        <h1 class="main-title">DUSI-NET</h1>
+        <p class="sub-title">SECURE ARCHIVE SYSTEM</p>
+      </div>
     </header>
 
-    <div class="search-area">
-      <input type="text" id="search-input" placeholder="SEARCH_DB_..." autocomplete="off">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="RECORD_QUERY_..." autocomplete="off">
     </div>
 
-    <nav class="archive-tree" id="archive-tree"></nav>
+    <nav class="nav-tree" id="nav-tree">
+      <div class="status-msg info">가시 필터 동기화 중...</div>
+    </nav>
 
-    <footer class="panel-footer">
-      <div class="sys-info">
-        <div class="info-row"><span>STATUS:</span> <span class="active">CONNECTED</span></div>
-        <div class="info-row"><span>NODE:</span> <span class="cyan">ADMIN-01</span></div>
+    <div id="sys-log" class="sys-log">
+      <div class="log-entry">[SYS] Terminal link established.</div>
+    </div>
+
+    <footer class="sidebar-footer">
+      <div class="access-info">
+        <div>NODE: <span class="highlight">DUSI-NODE-ADMIN</span></div>
+        <div>STATUS: <span class="highlight">ENCRYPTED_LINK</span></div>
       </div>
     </footer>
   </aside>
 
-  <!-- Mobile Overlay -->
-  <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-  <!-- Main Viewport -->
   <main class="viewport">
     <header class="top-nav">
-      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-breadcrumbs" id="nav-breadcrumbs">SYSTEM / ROOT / WELCOME</div>
+      <div id="nav-breadcrumbs" class="breadcrumbs">ROOT / WELCOME</div>
       <div class="top-nav-right">
-        <div class="time-box" id="current-time">00:00:00</div>
-        <div class="auth-badge">TOP SECRET</div>
+        <div id="current-time">00:00:00</div>
+        <div class="auth-stamp">CONFIDENTIAL</div>
       </div>
     </header>
 
-    <section class="content-area" id="content-area">
-      <!-- Welcome View -->
-      <div id="welcome-view" class="welcome-view">
-        <div class="welcome-content">
-          <div class="big-icon">&#9632;</div>
-          <h1 class="display-title">DUSI DATABASE</h1>
-          <p class="display-desc">도시야간안전 인프라 공단 핵심 전산망</p>
-          <div class="stats-row" id="welcome-stats"></div>
-        </div>
-      </div>
-
-      <!-- Document View -->
-      <div id="doc-view" class="document-view hidden">
-        <div class="doc-container">
-          <div class="doc-side-decor left"></div>
-          <div class="doc-side-decor right"></div>
+    <div class="content-scroll" id="content-scroll">
+      <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-box">
+          <div class="welcome-seal-container">
+            <div class="welcome-seal">DUSI</div>
+            <div class="seal-scan-line"></div>
+          </div>
+          <h2 class="welcome-title">DUSI-NET ARCHIVE</h2>
+          <p class="welcome-desc">도시야간안전 인프라 공단 전략 자산 기록물 저장소</p>
+          <div id="welcome-stats" class="stats-grid"></div>
           
-          <header class="doc-header">
-            <div class="meta-top">
-              <span class="doc-id" id="doc-id-display">DOC-XXXX-XXXX</span>
-              <span class="security-badge" id="security-display">UNCLASSIFIED</span>
+          <div class="system-health">
+            <div class="health-header">SYSTEM_HEALTH_STATUS</div>
+            <div class="health-bar-group" id="unit-status-list">
+              <div class="health-row"><span>REALITY_ANCHOR</span><div class="h-bar"><div class="fill" style="width: 99.9%"></div></div></div>
+              <div class="health-row"><span>COGNITIVE_SHIELD</span><div class="h-bar"><div class="fill" style="width: 94.2%"></div></div></div>
+              <div class="health-row"><span>MEMORY_INTEGRITY</span><div class="h-bar"><div class="fill" style="width: 98.7%"></div></div></div>
             </div>
-            <h1 class="doc-title" id="doc-title-display">---</h1>
-            <div class="meta-bottom">
-              <span id="doc-title-en">---</span>
-              <span id="doc-date" class="date-stamp">20XX. XX. XX.</span>
-            </div>
-          </header>
-
-          <article class="doc-body markdown-body" id="doc-body"></article>
-
-          <footer class="doc-footer" id="doc-footer"></footer>
+          </div>
         </div>
       </div>
-    </section>
+
+      <div id="doc-view" class="doc-frame hidden">
+        <div class="doc-paper">
+          <section class="yaml-info" id="yaml-info"></section>
+          <article class="doc-body markdown-body" id="doc-body"></article>
+          <footer class="doc-footer hidden" id="doc-footer"></footer>
+        </div>
+      </div>
+    </div>
   </main>
 </div>
+
+<button class="mobile-toggle" id="mobile-toggle">
+  <span></span><span></span><span></span>
+</button>
 
 <script src="js/marked.min.js"></script>
 <script src="js/app.js"></script>

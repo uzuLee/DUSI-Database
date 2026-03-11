@@ -1,248 +1,363 @@
 /* ============================================
-   DUSI-CORE TACTICAL HUD v5.2
-   GitHub Remote Loading & Error Fix
+   DUSI-NET BUREAUCRATIC ARCHIVE v9.4
+   Core Engine: YAML-Based Security & Context Spacing
    ============================================ */
 
 (function () {
   'use strict';
 
-  // [설정] 본인의 GitHub 정보로 수정하십시오.
   const GITHUB_CONFIG = {
-    user: "uzuLee", // 사용자명
-    repo: "DUSI-Database", // 저장소명 (예: 도시야간안전-인프라-공단)
-    branch: "docs" // 브랜치명
+    user: "uzuLee",
+    repo: "DUSI-Database",
+    branch: "docs"
   };
 
   let treeData = [];
-  let allFiles = [];
   let currentPath = null;
 
   // DOM Elements
-  const $sidePanel = document.getElementById('side-panel');
-  const $navTree = document.getElementById('archive-tree');
-  const $sidebarOverlay = document.getElementById('sidebar-overlay');
-  const $mobileToggle = document.getElementById('mobile-toggle');
-  const $breadcrumbs = document.getElementById('nav-breadcrumbs');
-  
-  const $welcomeView = document.getElementById('welcome-view');
+  const $navTree = document.getElementById('nav-tree');
+  const $welcomeView = document.getElementById('welcome-screen');
   const $docView = document.getElementById('doc-view');
   const $docBody = document.getElementById('doc-body');
   const $docFooter = document.getElementById('doc-footer');
-  const $bootCurtain = document.getElementById('boot-curtain');
-  
-  const $metaId = document.getElementById('meta-doc-id');
-  const $metaTitle = document.getElementById('doc-title-display');
-  const $metaTitleEn = document.getElementById('meta-title-en');
-  const $metaSecurity = document.getElementById('security-display');
-  const $metaDate = document.getElementById('doc-date');
-  const $welcomeStats = document.getElementById('welcome-stats');
+  const $yamlInfo = document.getElementById('yaml-info');
+  const $breadcrumbs = document.getElementById('nav-breadcrumbs');
+  const $currentTime = document.getElementById('current-time');
+  const $mobileToggle = document.getElementById('mobile-toggle');
+  const $sidebar = document.getElementById('sidebar');
+  const $contentScroll = document.getElementById('content-scroll');
+  const $sysLog = document.getElementById('sys-log');
+  const $monitoringBar = document.getElementById('monitoring-bar');
+  const $glitchLayer = document.getElementById('glitch-layer');
+  const $bootScreen = document.getElementById('boot-screen');
+  const $bootStatus = document.getElementById('boot-status');
+  const $bootProgress = document.getElementById('boot-progress');
+  const $bootPerc = document.getElementById('boot-perc');
+  const $securityModal = document.getElementById('security-modal');
+
+  // --- Marked.js Configuration ---
+  if (typeof marked !== 'undefined') {
+    const boldExtension = {
+      name: 'boldExtension',
+      level: 'inline',
+      start(src) { return src.indexOf('**'); },
+      tokenizer(src, tokens) {
+        const rule = /^\*\*(?!\s)([\s\S]+?)(?<!\s)\*\*/; 
+        const match = rule.exec(src);
+        if (match) {
+          return {
+            type: 'boldExtension',
+            raw: match[0],
+            text: match[1],
+            tokens: this.lexer.inlineTokens(match[1])
+          };
+        }
+      },
+      renderer(token) {
+        return `<strong class="tactical-bold">${this.parser.parseInline(token.tokens)}</strong>`;
+      }
+    };
+    marked.use({ 
+      extensions: [boldExtension],
+      gfm: true, 
+      breaks: true 
+    });
+  }
+
+  // --- System Log ---
+  function logSystem(msg, type = 'info') {
+    if (!$sysLog) return;
+    const entry = document.createElement('div');
+    entry.className = `log-entry ${type}`;
+    entry.textContent = `[${new Date().toTimeString().split(' ')[0]}] ${msg}`;
+    $sysLog.appendChild(entry);
+    $sysLog.scrollTop = $sysLog.scrollHeight;
+  }
+
+  // --- Boot Sequence ---
+  async function runAuthSequence() {
+    if (!$bootScreen) return;
+    const steps = [
+      { msg: "> INITIALIZING SECURE TERMINAL...", delay: 300 },
+      { msg: "> VERIFYING HASH INTEGRITY...", delay: 400 },
+      { msg: "> ACCESS GRANTED.", delay: 200 }
+    ];
+    for (let i = 0; i < steps.length; i++) {
+      if ($bootStatus) {
+        const line = document.createElement('div');
+        line.textContent = steps[i].msg;
+        $bootStatus.appendChild(line);
+      }
+      const prog = Math.floor(((i + 1) / steps.length) * 100);
+      if ($bootProgress) $bootProgress.style.width = prog + '%';
+      if ($bootPerc) $bootPerc.textContent = prog + '%';
+      await new Promise(r => setTimeout(r, steps[i].delay));
+    }
+    $bootScreen.classList.add('fade-out');
+    document.body.classList.add('ready');
+    setTimeout(() => $bootScreen.remove(), 800);
+  }
 
   async function init() {
     startClock();
-    setupMobileEvents();
+    setupMobile();
+    renderDashboard();
+    await runAuthSequence();
     
     try {
-      const res = await fetch('data/manifest.json');
-      if (!res.ok) throw new Error("Manifest Load Failed");
-      treeData = await res.json();
-      allFiles = flattenFiles(treeData);
-      
+      const branchRes = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.user}/${GITHUB_CONFIG.repo}/branches/${GITHUB_CONFIG.branch}`);
+      const branchData = await branchRes.json();
+      const treeRes = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.user}/${GITHUB_CONFIG.repo}/git/trees/${branchData.commit.commit.tree.sha}?recursive=1`);
+      const treeRaw = await treeRes.json();
+
+      treeData = buildHierarchy(treeRaw.tree);
       renderTree(treeData, $navTree, []);
-      updateWelcomeStats();
-      
-      setTimeout(() => {
-        if($bootCurtain) {
-          $bootCurtain.classList.add('fade-out');
-          setTimeout(() => $bootCurtain.remove(), 800);
-        }
-      }, 1000);
-
+      updateWelcomeStats(treeRaw.tree.filter(n => n.type === 'blob').length);
+      logSystem("Database sync complete.", "success");
     } catch (e) {
-      console.error('Boot Error:', e);
+      logSystem("API link failed.", "err");
     }
   }
 
-  function startClock() {
-    const $timeBox = document.getElementById('current-time');
-    if(!$timeBox) return;
-    setInterval(() => {
-      const now = new Date();
-      $timeBox.textContent = now.toTimeString().split(' ')[0];
-    }, 1000);
-  }
-
-  function setupMobileEvents() {
-    const toggleSidebar = () => {
-      $sidePanel.classList.toggle('open');
-      $sidebarOverlay.classList.toggle('active');
-    };
-    if($mobileToggle) $mobileToggle.addEventListener('click', toggleSidebar);
-    if($sidebarOverlay) $sidebarOverlay.addEventListener('click', toggleSidebar);
-  }
-
-  function flattenFiles(nodes) {
-    let files = [];
-    for (const node of nodes) {
-      if (node.type === 'file') files.push(node);
-      else if (node.children) files = files.concat(flattenFiles(node.children));
-    }
-    return files;
-  }
-
-  function renderTree(nodes, container, breadcrumbPath) {
-    container.innerHTML = '';
+  function buildHierarchy(nodes) {
+    const root = [];
+    const map = {};
     nodes.forEach(node => {
-      const el = document.createElement('div');
-      const currentLevelPath = [...breadcrumbPath, node.name.replace(/^\d+\.\s*/, '')];
+      if (node.path.startsWith('.') || node.type !== 'blob' || !node.path.endsWith('.md')) return;
+      const parts = node.path.split('/');
+      let cur = root;
+      let pathAcc = "";
+      parts.forEach((part, i) => {
+        pathAcc += (pathAcc ? '/' : '') + part;
+        if (!map[pathAcc]) {
+          const newNode = { name: part, type: i === parts.length - 1 ? 'file' : 'folder', path: node.path, children: [] };
+          map[pathAcc] = newNode;
+          cur.push(newNode);
+        }
+        cur = map[pathAcc].children;
+      });
+    });
+    return root;
+  }
 
+  function renderTree(nodes, container, path) {
+    if (!container) return;
+    container.innerHTML = '';
+    nodes.sort((a, b) => (a.type === 'file') - (b.type === 'file')).forEach(node => {
+      const div = document.createElement('div');
+      const cleanName = node.name.replace(/^\d+\.\s*/, '').replace('.md', '');
       if (node.type === 'folder') {
-        el.className = 'folder-item';
-        el.innerHTML = `<div class="folder-label">${node.name.replace(/^\d+\.\s*/, '')}</div><div class="folder-content"></div>`;
-        const label = el.querySelector('.folder-label');
-        label.addEventListener('click', () => el.classList.toggle('open'));
-        renderTree(node.children || [], el.querySelector('.folder-content'), currentLevelPath);
+        div.className = 'folder-item';
+        div.innerHTML = `<div class="folder-label">${cleanName}</div><div class="folder-content"></div>`;
+        div.querySelector('.folder-label').addEventListener('click', () => div.classList.toggle('open'));
+        renderTree(node.children, div.querySelector('.folder-content'), [...path, cleanName]);
       } else {
         const btn = document.createElement('button');
         btn.className = 'file-link';
-        btn.textContent = node.name.replace(/^\d+\.\s*/, '').replace('.md', '').replace(/_/g, ' ');
+        btn.innerHTML = `<span class="bullet">▶</span> ${cleanName}`;
         btn.addEventListener('click', () => {
           document.querySelectorAll('.file-link').forEach(l => l.classList.remove('active'));
           btn.classList.add('active');
-          updateBreadcrumbs(currentLevelPath);
-          openDocument(node);
-          if (window.innerWidth <= 768) {
-            $sidePanel.classList.remove('open');
-            $sidebarOverlay.classList.remove('active');
+          if ($breadcrumbs) $breadcrumbs.textContent = `SYSTEM / ${[...path, cleanName].join(' / ').toUpperCase()}`;
+          openDocument(node, cleanName); // Now calls directly, security check happens after fetch
+        });
+        div.appendChild(btn);
+      }
+      container.appendChild(div);
+    });
+  }
+
+  async function openDocument(node, title) {
+    if (currentPath === node.path) return;
+    currentPath = node.path;
+    if ($contentScroll) $contentScroll.classList.add('switching');
+    logSystem(`Decrypting stream: ${title}...`);
+
+    try {
+      const res = await fetch(`https://raw.githubusercontent.com/${GITHUB_CONFIG.user}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${encodeURIComponent(node.path)}`);
+      const text = await res.text();
+      const { meta, body, footer } = parseFullDocument(text);
+      
+      const security = String(meta['보안등급'] || '');
+      
+      // YAML-BASED SECURITY CHECK
+      if (security.includes('소급말소')) {
+        logSystem("RESTRICTED_NODE_DETECTED", "warn");
+        if ($securityModal) {
+          $securityModal.classList.remove('hidden');
+          const bodyContent = document.getElementById('modal-body-content');
+          if (bodyContent) bodyContent.textContent = "경고: 본 문서는 [소급말소-00] 등급의 기밀 사항입니다. 열람 시 모든 인과관계 데이터가 실시간 추적 대상이 됩니다.";
+          
+          document.getElementById('modal-confirm').onclick = () => {
+            $securityModal.classList.add('hidden');
+            finalizeRender(meta, body, footer, title);
+          };
+          document.getElementById('modal-cancel').onclick = () => {
+            $securityModal.classList.add('hidden');
+            $contentScroll.classList.remove('switching');
+            currentPath = null; // Reset current path to allow re-click
+            logSystem("Access denied by operator.", "err");
+          };
+          return; // Wait for modal
+        }
+      }
+
+      finalizeRender(meta, body, footer, title);
+    } catch (e) {
+      logSystem("Decryption failed.", "err");
+      $contentScroll.classList.remove('switching');
+    }
+  }
+
+  function finalizeRender(meta, body, footer, title) {
+    updateAtmosphere(meta['보안등급'] || '');
+    renderContent(meta, body, footer, title);
+    if ($contentScroll) $contentScroll.classList.remove('switching');
+  }
+
+  function parseFullDocument(raw) {
+    const clean = raw.trim();
+    let meta = {}, body = raw, footer = null;
+    
+    if (clean.startsWith('---')) {
+      const parts = clean.split('---');
+      if (parts.length >= 3) {
+        const yamlStr = parts[1].trim();
+        body = parts.slice(2).join('---').trim();
+        
+        const lines = yamlStr.split('\n');
+        let lastKey = null;
+
+        lines.forEach(line => {
+          const trimmed = line.trim();
+          if (!trimmed || trimmed.startsWith('#')) return;
+
+          if (trimmed.startsWith('-')) {
+            if (lastKey) {
+              if (!Array.isArray(meta[lastKey])) meta[lastKey] = [];
+              meta[lastKey].push(trimmed.substring(1).trim().replace(/^["']|["']$/g, ''));
+            }
+          } else {
+            const splitIdx = line.indexOf(':');
+            if (splitIdx !== -1) {
+              const k = line.substring(0, splitIdx).trim();
+              let v = line.substring(splitIdx + 1).trim().replace(/^["']|["']$/g, '');
+              
+              if (v === "" || v === "[]") {
+                meta[k] = [];
+              } else if (v.startsWith('[') && v.endsWith(']')) {
+                meta[k] = v.substring(1, v.length - 1).split(',').map(s => s.trim().replace(/^["']|["']$/g, ''));
+              } else if (v.includes(',') && !v.includes('<!--')) {
+                meta[k] = v.split(',').map(s => s.trim());
+              } else {
+                meta[k] = v;
+              }
+              lastKey = k;
+            }
           }
         });
-        el.appendChild(btn);
       }
-      container.appendChild(el);
-    });
-  }
-
-  function updateBreadcrumbs(pathArray) {
-    if($breadcrumbs) $breadcrumbs.textContent = `SYSTEM / ${pathArray.join(' / ').toUpperCase()}`;
-  }
-
-  function clearDocView() {
-    if(!$docView) return;
-    $docView.classList.add('hidden');
-    if($docBody) $docBody.innerHTML = '';
-    if($docFooter) {
-      $docFooter.innerHTML = '';
-      $docFooter.classList.add('hidden');
-    }
-    if($metaId) $metaId.textContent = '';
-    if($metaTitle) $metaTitle.textContent = 'LOADING...';
-    if($metaTitleEn) $metaTitleEn.textContent = '';
-    if($metaSecurity) $metaSecurity.textContent = '';
-    if($metaDate) $metaDate.textContent = '';
-  }
-
-  async function openDocument(node) {
-    // node.orig_path를 사용하여 GitHub Raw 경로 생성
-    // build.py에서 manifest 생성 시 'orig_path' 속성을 사용함
-    if (!node.orig_path) {
-        // Flat 모드일 경우 node.path (DUSI-ID) 기반 로컬 로드 시도
-        loadLocalDocument(node);
-        return;
     }
 
-    clearDocView();
-    currentPath = node.orig_path;
-
-    // GitHub Raw URL 생성
-    const rawUrl = `https://raw.githubusercontent.com/${GITHUB_CONFIG.user}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${encodeURIComponent(node.orig_path)}`;
-
-    try {
-      const res = await fetch(rawUrl);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const rawText = await res.text();
-      
-      const { meta, body } = parseFrontmatter(rawText);
-      renderDoc(meta, body, node);
-    } catch (e) {
-      console.error('Remote Fetch Failed:', e);
-      // 실패 시 로컬 data/vault 로드 시도 (Fallback)
-      loadLocalDocument(node);
+    const footerMarker = /\*\*\[시스템 식별 번호:/;
+    const match = body.match(footerMarker);
+    if (match) {
+      footer = body.substring(match.index).trim();
+      body = body.substring(0, match.index).trim();
     }
+
+    return { meta, body, footer };
   }
 
-  async function loadLocalDocument(node) {
-    const localUrl = `data/vault/${encodeURIComponent(node.path)}.md`;
-    try {
-      const res = await fetch(localUrl);
-      const rawText = await res.text();
-      const { meta, body } = parseFrontmatter(rawText);
-      renderDoc(meta, body, node);
-    } catch (e) {
-      if($docBody) $docBody.innerHTML = `<div style="color:#ff0055; padding:2rem; border:1px solid #ff0055;">[ERROR] DATA_LINK_BROKEN<br>ID: ${node.path}</div>`;
-    }
-  }
-
-  function parseFrontmatter(raw) {
-    const clean = raw.trim();
-    if (!clean.startsWith('---')) return { meta: {}, body: clean };
-    const parts = clean.split('---');
-    const yaml = parts[1].trim();
-    const body = parts.slice(2).join('---').trim();
-    const meta = {};
-    yaml.split('\n').forEach(line => {
-      const colon = line.indexOf(':');
-      if (colon !== -1) {
-        const k = line.substring(0, colon).trim();
-        const v = line.substring(colon + 1).trim().replace(/^["']|["']$/g, '');
-        meta[k] = v;
-      }
-    });
-    return { meta, body };
-  }
-
-  function renderDoc(meta, body, node) {
-    if($metaId) $metaId.textContent = meta['문서번호'] || node.meta?.docId || 'INTERNAL-REF';
-    if($metaTitle) $metaTitle.textContent = node.name.replace(/^\d+\.\s*/, '').replace('.md', '').replace(/_/g, ' ');
-    if($metaTitleEn) $metaTitleEn.textContent = meta['영문명'] || 'UNKNOWN_ASSET_DATA';
-    if($metaDate) $metaDate.textContent = meta['공표일자'] || '20XX. XX. XX.';
+  function renderContent(meta, body, footer, title) {
+    if (!$yamlInfo || !$docBody) return;
     
-    const sec = meta['보안등급'] || 'UNCLASSIFIED';
-    if($metaSecurity) {
-      $metaSecurity.textContent = sec.replace(/[\[\]]/g, '').toUpperCase();
-      $metaSecurity.className = 'security-badge ' + (
-        sec.includes('소급말소') ? 'sec-소급말소' :
-        sec.includes('심의종결') ? 'sec-심의종결' :
-        sec.includes('결재보류') ? 'sec-결재보류' : 'sec-대외비'
-      );
-    }
-
-    const splitIdx = body.indexOf('**[DUSI');
-    let main = body;
-    let footer = null;
-    if (splitIdx !== -1) {
-      main = body.substring(0, splitIdx);
-      footer = body.substring(splitIdx);
-    }
-
-    if($docBody) $docBody.innerHTML = marked.parse(main);
+    let yamlHtml = `<div class="meta-label">ADMIN_IDENTIFICATION_PROTOCOL</div><table class="yaml-table">`;
+    ['영문명', '문서번호', '분류번호', '보안등급', '공표일자'].forEach(k => {
+      if (meta[k]) {
+        let val = meta[k];
+        if (k === '분류번호' && Array.isArray(val)) {
+          const pub = val.find(v => typeof v === 'string' && !v.startsWith('DUSI') && !v.includes('<!--')) || val[0];
+          const dusi = val.find(v => typeof v === 'string' && v.startsWith('DUSI')) || 'HIDDEN';
+          val = `<span class="id-with-tooltip" data-dusi="${dusi}">${pub}</span>`;
+        } else if (Array.isArray(val)) {
+          val = val.join(', ');
+        }
+        yamlHtml += `<tr><th>${k}</th><td>${val}</td></tr>`;
+      }
+    });
+    $yamlInfo.innerHTML = yamlHtml + `</table>`;
+    $docBody.innerHTML = `<h1>${title}</h1>` + marked.parse(body);
     
     if (footer && $docFooter) {
       $docFooter.innerHTML = marked.parse(footer);
       $docFooter.classList.remove('hidden');
+    } else if ($docFooter) {
+      $docFooter.classList.add('hidden');
     }
 
-    if($docView) $docView.classList.remove('hidden');
-    if($welcomeView) $welcomeView.classList.add('hidden');
-    const viewport = document.querySelector('.content-area');
-    if(viewport) viewport.scrollTop = 0;
+    if ($docView) $docView.classList.remove('hidden');
+    if ($welcomeView) $welcomeView.classList.add('hidden');
+    if ($contentScroll) $contentScroll.scrollTop = 0;
   }
 
-  function updateWelcomeStats() {
-    if(!$welcomeStats) return;
-    const orgs = new Set(allFiles.map(f => f.path.split('-')[1]));
-    $welcomeStats.innerHTML = `
-      <div style="font-family:monospace; font-size:0.8rem; color:#00e5ff; letter-spacing:0.1em;">
-        RECORDS: ${allFiles.length} | UNITS: ${orgs.size} | UPTIME: 99.9%
-      </div>
+  function updateAtmosphere(security) {
+    document.body.setAttribute('data-security-grade', 'default');
+    if ($monitoringBar) $monitoringBar.classList.add('hidden');
+    if ($glitchLayer) $glitchLayer.classList.add('hidden');
+
+    const secStr = String(security);
+    if (secStr.includes('심의종결')) {
+      document.body.setAttribute('data-security-grade', 'secret');
+      if ($monitoringBar) {
+        $monitoringBar.classList.remove('hidden');
+        $monitoringBar.textContent = "SYSTEM_MONITORING_ACTIVE // SECURITY_LEVEL_01";
+      }
+    } else if (secStr.includes('소급말소')) {
+      document.body.setAttribute('data-security-grade', 'void');
+      if ($monitoringBar) {
+        $monitoringBar.classList.remove('hidden');
+        $monitoringBar.textContent = "CRITICAL_SECURITY_ALERT // RETROACTIVE_ERASURE_IN_PROGRESS";
+      }
+      if ($glitchLayer) $glitchLayer.classList.remove('hidden');
+    }
+  }
+
+  function renderDashboard() {
+    const list = document.getElementById('unit-status-list');
+    if (!list) return;
+    const units = ["유지관리(2000)", "야간환경정비(3000)", "유성물류기획(4000)", "바른도시건설(5000)", "미래생명과학(6000)", "가온정밀(7000)", "특수자산분석(8000)"];
+    list.innerHTML = '';
+    units.forEach(u => {
+      const row = document.createElement('div');
+      row.className = 'health-row';
+      row.innerHTML = `<span>${u}</span><div class="h-bar"><div class="fill" style="width: ${85 + Math.random() * 15}%"></div></div>`;
+      list.appendChild(row);
+    });
+  }
+
+  function startClock() {
+    setInterval(() => { 
+      const $time = document.getElementById('current-time');
+      if($time) $time.textContent = new Date().toTimeString().split(' ')[0]; 
+    }, 1000);
+  }
+
+  function setupMobile() {
+    if($mobileToggle) $mobileToggle.addEventListener('click', () => {
+      if ($sidebar) $sidebar.classList.toggle('open');
+      $mobileToggle.classList.toggle('active');
+    });
+  }
+
+  function updateWelcomeStats(count) {
+    const $stats = document.getElementById('welcome-stats');
+    if (!$stats) return;
+    $stats.innerHTML = `
+      <div class="stat-item"><div class="stat-val">${count}</div><div class="stat-label">RECORDS</div></div>
+      <div class="stat-item"><div class="stat-val">LIVE</div><div class="stat-label">DATA_NODE</div></div>
+      <div class="stat-item"><div class="stat-val">SECURE</div><div class="stat-label">INTEGRITY</div></div>
     `;
   }
 
